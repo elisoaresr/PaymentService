@@ -1,23 +1,34 @@
 package entities;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Installment {
 
-	private Date dueDate;
-	private Double amount;
+	private static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-	public Installment(Date dueDate, Double amount) {
+	private LocalDate dueDate;
+	private Double amount;
+	
+	public Installment() {
+		
+	}
+	
+	public Installment(LocalDate dueDate, Double amount) {
 		this.dueDate = dueDate;
 		this.amount = amount;
 	}
 
-	public Date getDueDate() {
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
 
 	public Double getAmount() {
 		return amount;
+	}
+	
+	public String toString() {
+		return fmt.format(getDueDate()) + " - " + String.format("%.2f", getAmount());
 	}
 
 }
