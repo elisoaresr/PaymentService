@@ -26,7 +26,7 @@ public class ContractService {
 
 			double interest = onlinePaymentService.interest(basicQuota, i);
 			double fee = onlinePaymentService.paymentFee(basicQuota + interest);
-			double quota = (basicQuota + interest + fee) - basicQuota;
+			double quota = (basicQuota + interest + fee);
 
 			contract.getInstalments().add(new Installment(dueDate, quota));
 		}
